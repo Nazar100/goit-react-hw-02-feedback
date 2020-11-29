@@ -15,12 +15,13 @@ class App extends Component {
     this.setState(prevState => ({
       [option]: prevState[option] + 1,
     }));
-    // console.log(this.state[option].value);
   };
 
   countTotalFeedback = () => {
     const { good, neutral, bad } = this.state;
+
     let total = good + neutral + bad;
+
     return total;
   };
 
@@ -28,18 +29,20 @@ class App extends Component {
     const { good, neutral, bad } = this.state;
 
     let average = Math.round((good / (good + neutral + bad)) * 100);
+
     return average;
   };
 
   render() {
     const { good, neutral, bad } = this.state;
+    const options = Object.keys(this.state);
 
     return (
       <div>
         <Section title="Please leave your feedback">
           <FeedbackOptions
+            options={options}
             onLeaveFeedback={this.onLeaveFeedback}
-            options={this.state}
           />
         </Section>
 
