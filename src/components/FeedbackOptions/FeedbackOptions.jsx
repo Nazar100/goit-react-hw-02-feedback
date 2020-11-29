@@ -3,6 +3,8 @@ import s from './FeedbackOptions.module.css';
 import Button from './Button/Button';
 
 export default function FeedbackOptions({ options, onLeaveFeedback }) {
+  if (options.length === 0) return null;
+
   return (
     <ul className={s.list}>
       {options.map(option => {
