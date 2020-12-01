@@ -4,6 +4,8 @@ import FeedbackOptions from './components/FeedbackOptions/FeedbackOptions';
 import Section from './components/Section/Section';
 import Notification from './components/Notification/Notification';
 
+const options = ['good', 'neutral', 'bad'];
+
 class App extends Component {
   state = {
     good: 0,
@@ -20,22 +22,17 @@ class App extends Component {
   countTotalFeedback = () => {
     const { good, neutral, bad } = this.state;
 
-    let total = good + neutral + bad;
-
-    return total;
+    return good + neutral + bad;
   };
 
   countPositiveFeedbackPercentage = () => {
     const { good, neutral, bad } = this.state;
 
-    let average = Math.round((good / (good + neutral + bad)) * 100);
-
-    return average;
+    return Math.round((good / (good + neutral + bad)) * 100);
   };
 
   render() {
     const { good, neutral, bad } = this.state;
-    const options = Object.keys(this.state);
 
     return (
       <div>
